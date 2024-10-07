@@ -3,8 +3,28 @@ import psycopg2
 import pandas as pd 
 from sqlalchemy import create_engine
 from datetime import datetime
-from config.databases import database_dw, database_aws
 from openpyxl import Workbook
+from dotenv import load_dotenv
+
+load_dotenv()
+
+database_dw = {
+    "server" : os.getenv('MS_SERVER'),
+    "database" : os.getenv('MS_DATABASE'),
+    "driver" : os.getenv('MS_DRIVER'),
+    "user" : os.getenv('MS_USERNAME'),
+    "password" : os.getenv('MS_PASSWORD')
+
+}
+
+database_aws = {
+    "endpoint" : os.getenv('ENDPOINT_AWS'),
+    "port" : os.getenv('PORT_AWSS'),
+    "user" : os.getenv('USER_AWS'),
+    "passwd" : os.getenv('PASSWD_AWS'),
+    "region" : os.getenv('REGION_AWS'),
+    "dbname" : os.getenv('DBNAME_AWS')
+}
 
 wb = Workbook()
 
